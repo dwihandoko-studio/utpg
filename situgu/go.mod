@@ -6,6 +6,7 @@ require github.com/golang-jwt/jwt v3.2.2+incompatible
 
 require (
 	github.com/boj/redistore v0.0.0-20180917114910-cd5dcc76aeff // indirect
+	github.com/dwihandoko-studio/utpg/layanan v0.0.0-20221225175240-9f1d90c8b987
 	github.com/gin-contrib/sessions v0.0.5 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.8.2 // indirect

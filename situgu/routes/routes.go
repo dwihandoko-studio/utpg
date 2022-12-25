@@ -8,8 +8,8 @@ import (
 	"os"
 	"time"
 
+	"github.com/dwihandoko-studio/utpg/layanan/models"
 	"github.com/dwihandoko-studio/utpg/situgu/controllers"
-	"github.com/dwihandoko-studio/utpg/situgu/models"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"

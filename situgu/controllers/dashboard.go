@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/url"
 
+	"github.com/dwihandoko-studio/utpg/layanan/models"
 	"github.com/dwihandoko-studio/utpg/situgu/config"
-	"github.com/dwihandoko-studio/utpg/situgu/models"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
