@@ -1,0 +1,63 @@
+version: "3.8"
+services:
+  # reverse-proxy:
+  #   image: traefik:v2.2
+  #   command:
+  #     - "--api.insecure=true"
+  #     - "--providers.docker"
+  #     - "--providers.docker.exposedByDefault=false"
+  #   ports:
+  #     - "80:80"
+  #     - "8080:8080"
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  redis:
+    image: redis:latest
+    volumes:
+        - ./redis:/data
+    ports:
+        - 6379:6379
+  layanan:
+    build:
+      context: ./layanan
+      target: builder
+    image: layanan
+    ports:
+      - "8041:8080"
+    # expose:
+    #   - "8080"
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.layanan.rule=Host(`handoko.dev`) && PathPrefix(`/`)"
+    environment:
+      - ENV=dev
+      - API_TOKEN=0b4e06f30dc26c36f322580591e0a07b
+      - URL_BE=http://handoko.dev:1990
+      - REDISPORT=6379
+      - REDISHOST=redis
+    volumes:
+      - ./layanan:/go/src/app
+    # have to use $$ (double-dollar) so docker doesn't try to subtitute a variable
+    command: reflex -r "\.go$$" -s -- sh -c "go run ./"
+  situgu:
+    build:
+      context: ./situgu
+      target: builder
+    image: situgu
+    ports:
+      - "8042:8080"
+    # expose:
+    #   - "8080"
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.layanan.rule=Host(`handoko.dev`) && PathPrefix(`/situgu`)"
+    environment:
+      - ENV=dev
+      - API_TOKEN=0b4e06f30dc26c36f322580591e0a07b
+      - URL_BE=http://handoko.dev:1990
+      - REDISPORT=6379
+      - REDISHOST=redis
+    volumes:
+      - ./situgu:/go/src/app
+    # have to use $$ (double-dollar) so docker doesn't try to subtitute a variable
+    command: reflex -r "\.go$$" -s -- sh -c "go run ./"

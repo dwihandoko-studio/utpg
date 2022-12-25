@@ -1,0 +1,218 @@
+{{ define "Portal_loged" }}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Portal Layanan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="Portal Layanan Resmi Dinas Pendidikan dan Kebudayaan Kab. Lampung Tengah" name="description" />
+  <meta content="handokowae.my.id" name="author" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="keywords" content="portal, layanan, portal layanan, portal layanan disdikbud, disdikbud, disdik, pendidikan, lampung, lampung tengah, pendidikan lampung tengah, dinas pendidikan, dinas pendidikan lampung tengah, dinas pendidikan dan kebudayaan, dinas pendidikan dan kebudayaan lampung tengah, kabupaten lampung tengah">
+
+  <meta property="og:title" content="Portal Layanan Resmi Dinas Pendidikan dan Kebudayaan Kab. Lampung Tengah" />
+  <meta property="og:url" content="{{ .base_url }}" />
+  <meta property="og:image" content="{{ .base_url }}/favicon/android-icon-192x192.png" />
+  <meta property="og:description" content="Portal Layanan Resmi Dinas Pendidikan dan Kebudayaan Kab. Lampung Tengah" />
+
+  <meta itemprop="name" content="Portal Layanan Resmi Dinas Pendidikan dan Kebudayaan Kab. Lampung Tengah" />
+  <meta itemprop="description" content="Portal Layanan Resmi Dinas Pendidikan dan Kebudayaan Kab. Lampung Tengah" />
+  <meta itemprop="image" content="{{ .base_url }}/favicon/android-icon-192x192.png" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ .base_url }}/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{ .base_url }}/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ .base_url }}/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ .base_url }}/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ .base_url }}/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ .base_url }}/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ .base_url }}/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ .base_url }}/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ .base_url }}/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ .base_url }}/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ .base_url }}/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ .base_url }}/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ .base_url }}/favicon/favicon-16x16.png">
+  <link rel="manifest" href="{{ .base_url }}/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="{{ .base_url }}/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <style>
+    .active-menu-href {
+      color: #556ee6 !important;
+    }
+  </style>
+
+  <link href="{{ .base_url }}/theme/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+  <link href="{{ .base_url }}/theme/css/icons.min.css" rel="stylesheet" type="text/css" />
+  <link href="{{ .base_url }}/theme/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+  <link href="{{ .base_url }}/theme/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  <script>
+    if (sessionStorage.getItem("is_visited") === null) {
+      sessionStorage.setItem("is_visited", "dark-mode-switch");
+    }
+
+    // sessionStorage.setItem("is_visited", "dark-mode-switch");
+    const BASE_URL = '{{ .base_url }}';
+  </script>
+  <style>
+    ._sorot-mouse:hover {
+      background-color: #c3cbe4;
+    }
+
+    ._sorot-mouse:hover ._color-h-hover {
+      color: #000 !important;
+    }
+
+    ._sorot-mouse:hover ._color-p-hover {
+      color: #202022 !important;
+    }
+  </style>
+</head>
+
+<body data-topbar="dark" data-layout="horizontal" data-layout-size="boxed" class="loading-logout">
+
+  <!-- Begin page -->
+  <div id="layout-wrapper">
+    {{ template "HeadersLoged"}}
+
+    <div class="main-content">
+      <div class="page-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                <h4 class="mb-sm-0 font-size-18">PORTAL LAYANAN</h4>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-3 col-sm-6">
+              <div class="card text-center  _sorot-mouse">
+                <a href="{{ .base_url }}/situgu">
+                  <div class="card-body">
+                    <div class="mb-4">
+                      <img class="avatar-lg" src="{{ .base_url }}/theme/layanan/situgu.png" alt="">
+                    </div>
+                    <h5 class="font-size-15 mb-1"><a href="{{ .base_url }}/situgu" style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity));" class="_color-h-hover">SI-TUGU</a></h5>
+                    <p><a class="_color-p-hover" style="color: #c3cbe4;" href="{{ .base_url }}/situgu">Sistem Usulan Tunjangan Guru</a></p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ template "Footer" }}
+    </div>
+  </div>
+  <div class="right-bar">
+    <div data-simplebar class="h-100">
+      <div class="rightbar-title d-flex align-items-center px-3 py-4">
+        <h5 class="m-0 me-2">Settings</h5>
+        <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+          <i class="mdi mdi-close noti-icon"></i>
+        </a>
+      </div>
+      <hr class="mt-0" />
+      <h6 class="text-center mb-0">Choose Layouts</h6>
+      <div class="p-4">
+        <div class="mb-2">
+          <img src="{{ .base_url }}/theme/images/layouts/layout-1.jpg" class="img-thumbnail" alt="layout images">
+        </div>
+        <div class="form-check form-switch mb-3">
+          <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch">
+          <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+        </div>
+        <div class="mb-2">
+          <img src="{{ .base_url }}/theme/images/layouts/layout-2.jpg" class="img-thumbnail" alt="layout images">
+        </div>
+        <div class="form-check form-switch mb-3">
+          <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" checked>
+          <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+        </div>
+        <div class="mb-2">
+          <img src="{{ .base_url }}/theme/images/layouts/layout-3.jpg" class="img-thumbnail" alt="layout images">
+        </div>
+        <div class="form-check form-switch mb-3">
+          <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch">
+          <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
+        </div>
+        <div class="mb-2">
+          <img src="{{ .base_url }}/theme/images/layouts/layout-4.jpg" class="img-thumbnail" alt="layout images">
+        </div>
+        <div class="form-check form-switch mb-5">
+          <input class="form-check-input theme-choice" type="checkbox" id="dark-rtl-mode-switch">
+          <label class="form-check-label" for="dark-rtl-mode-switch">Dark RTL Mode</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rightbar-overlay"></div>
+  <script src="{{ .base_url }}/theme/libs/jquery/jquery.min.js"></script>
+  <script src="{{ .base_url }}/theme/js/blockUI.min.js"></script>
+  <script src="{{ .base_url }}/theme/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ .base_url }}/theme/libs/metismenu/metisMenu.min.js"></script>
+  <script src="{{ .base_url }}/theme/libs/simplebar/simplebar.min.js"></script>
+  <script src="{{ .base_url }}/theme/libs/node-waves/waves.min.js"></script>
+  <script src="{{ .base_url }}/theme/libs/sweetalert2/sweetalert2.min.js"></script>
+  <script src="{{ .base_url }}/theme/js/app.js"></script>
+
+  <script>
+    function reloadPage(action = "") {
+      if (action === "") {
+        document.location.href = "<?= current_url(true); ?>";
+      } else {
+        document.location.href = action;
+      }
+    }
+
+    function aksiLogout(e) {
+      // e.preventDefault();
+      const href = BASE_URL + "/logout";
+      Swal.fire({
+        title: 'Apakah anda yakin ingin keluar?',
+        text: "Keluar Dari Aplikasi.",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Sign Out!'
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            url: href,
+            type: 'GET',
+            contentType: false,
+            cache: false,
+            beforeSend: function() {
+              $('body.loading-logout').block({
+                message: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
+              });
+            },
+            success: function(resMsg) {
+              Swal.fire(
+                'Berhasil!',
+                "Anda berhasil logout.",
+                'success'
+              ).then((valRes) => {
+                document.location.href = BASE_URL + "/web/home";
+              })
+            },
+            error: function() {
+              $('body.loading-logout').unblock();
+              Swal.fire(
+                'Gagal!',
+                "Trafik sedang penuh, silahkan ulangi beberapa saat lagi.",
+                'warning'
+              );
+            }
+          })
+        }
+      })
+    };
+  </script>
+</body>
+
+</html>
+{{end}}
