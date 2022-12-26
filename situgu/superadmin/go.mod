@@ -28,7 +28,7 @@ require (
 )
 
 require (
-	github.com/dwihandoko-studio/utpg/layanan v0.0.0-20221225180112-32f19b4c3064
+	github.com/dwihandoko-studio/utpg/layanan v0.0.0-20221226155618-3dc1d47818d0
 	github.com/gin-contrib/sessions v0.0.5
 	github.com/gin-gonic/gin v1.8.2
 	github.com/goccy/go-json v0.10.0 // indirect
