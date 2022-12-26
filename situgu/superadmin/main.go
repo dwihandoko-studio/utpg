@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/dwihandoko-studio/utpg/situgu/routes"
+	"github.com/dwihandoko-studio/utpg/situgu/superadmin/routes"
 	// "github.com/joho/godotenv"
 )
 

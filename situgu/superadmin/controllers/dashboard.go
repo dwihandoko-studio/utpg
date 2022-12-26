@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/url"
 
+	"github.com/dwihandoko-studio/utpg/layanan/config"
 	"github.com/dwihandoko-studio/utpg/layanan/models"
-	"github.com/dwihandoko-studio/utpg/situgu/config"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
@@ -70,34 +70,7 @@ func DashboardSu(c *gin.Context) {
 		// 	c.Redirect(http.StatusFound, location.RequestURI())
 		// } else {
 		c.HTML(http.StatusOK,
-			"Dashboard_su",
-			gin.H{
-				"message":  "ERROR",
-				"base_url": config.BaseUrl(c),
-				"User": gin.H{
-					"fullname": "handoko",
-				},
-			})
-	}
-}
-
-func DashboardAdmin(c *gin.Context) {
-	session := sessions.Default(c)
-
-	loggedIn := session.Get("loggedIn")
-	fmt.Println("loggedIn status: ", loggedIn)
-
-	if loggedIn != true {
-		location := url.URL{Path: "/auth"}
-		c.Redirect(http.StatusFound, location.RequestURI())
-	} else {
-		// _, err := helpers.GetCookie(c, "data")
-		// if err != nil {
-		// 	location := url.URL{Path: "/auth"}
-		// 	c.Redirect(http.StatusFound, location.RequestURI())
-		// } else {
-		c.HTML(http.StatusOK,
-			"Dashboard_admin",
+			"Dashboard",
 			gin.H{
 				"message":  "ERROR",
 				"base_url": config.BaseUrl(c),

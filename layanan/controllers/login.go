@@ -128,7 +128,7 @@ func RequestLogin(c *gin.Context) {
 	session.Set("message", "")
 	session.Set("jwtAct", res.AccessToken)
 	session.Set("jwtRft", res.RefreshToken)
-	session.Options(sessions.Options{MaxAge: 28800})
+	session.Options(sessions.Options{MaxAge: 3600})
 	session.Save()
 
 	config.ReturnJsonSuccess(c, 200, "Login berhasil", "portal", nil)

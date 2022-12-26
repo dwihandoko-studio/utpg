@@ -49,7 +49,7 @@ func Init() *gin.Engine {
 	{
 		//router.Use(AuthRequired)
 		private.GET("/portal", controllers.PortalPage)
-		private.GET("/test", controllers.TestPage)
+		private.GET("/situgu", controllers.DashboardSituguInit)
 		// //network handlers
 		// private.POST("/create_network", CreateNetwork)
 		// private.POST("/delete_network", DeleteNetwork)

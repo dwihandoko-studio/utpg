@@ -1,5 +1,27 @@
 version: "3.8"
 services:
+  # dbmysqlutpg:
+  #   container_name: db_mysql_utpg-container
+  #   build:
+  #       context: .
+  #       dockerfile: docker/mysql/Dockerfile
+  #   environment: 
+  #       MYSQL_DATABASE: ${MYSQL_DATABASE}
+  #       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #       MYSQL_USER: ${MYSQL_USER}
+  #       MYSQL_TCP_PORT: ${MYSQL_PORT}
+  #       MYSQL_UNIX_PORT: ${MYSQL_PORT}
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   restart: always
+  #   volumes:
+  #       - ./localfolder/mysql:/var/lib/mysql
+  #       - ./localfolder/logs/mysql:/var/log/mysql
+  #   ports:
+  #       - ${MYSQL_PORT}:${MYSQL_PORT}
+  #   networks:
+  #       - utpgnet
+
   # reverse-proxy:
   #   image: traefik:v2.2
   #   command:
@@ -39,11 +61,11 @@ services:
       - ./layanan:/go/src/app
     # have to use $$ (double-dollar) so docker doesn't try to subtitute a variable
     command: reflex -r "\.go$$" -s -- sh -c "go run ./"
-  situgu:
+  situgu-admin:
     build:
-      context: ./situgu
+      context: ./situgu/superadmin
       target: builder
-    image: situgu
+    image: situgu-admin
     ports:
       - "8042:8080"
     # expose:
@@ -58,6 +80,6 @@ services:
       - REDISPORT=6379
       - REDISHOST=redis
     volumes:
-      - ./situgu:/go/src/app
+      - ./situgu/superadmin:/go/src/app
     # have to use $$ (double-dollar) so docker doesn't try to subtitute a variable
     command: reflex -r "\.go$$" -s -- sh -c "go run ./"

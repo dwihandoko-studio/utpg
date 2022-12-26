@@ -2,6 +2,7 @@ github.com/boj/redistore v0.0.0-20180917114910-cd5dcc76aeff h1:RmdPFa+slIr4SCBg4
 github.com/boj/redistore v0.0.0-20180917114910-cd5dcc76aeff/go.mod h1:+RTT1BOk5P97fT2CiHkbFQwkK3mjsFAP6zCYV2aXtjw=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/dwihandoko-studio/utpg/layanan v0.0.0-20221225175240-9f1d90c8b987 h1:4Q6p0Tq8DYfzaUJtNTg7NccVka8GXg+c//AUeF9JSyg=
 github.com/dwihandoko-studio/utpg/layanan v0.0.0-20221225175240-9f1d90c8b987/go.mod h1:pFvWGIk33/hu2H9mkCsLZuPW8XkZE5gKk5zwHZERoLo=

@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"net/url"
 	"os"
 	"time"
 
 	"github.com/dwihandoko-studio/utpg/layanan/models"
-	"github.com/dwihandoko-studio/utpg/situgu/controllers"
+	"github.com/dwihandoko-studio/utpg/situgu/superadmin/controllers"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
@@ -24,7 +25,13 @@ func Init() *gin.Engine {
 	gob.Register(models.User{})
 	funcMap := template.FuncMap{
 		"printTimestamp": PrintTimestamp,
-		// "wrapRelayNetwork": WrapRelayNetwork,
+		"toImageModal": func(image *string) template.HTML {
+			if image == nil || *image == "" {
+				return template.HTML("")
+			}
+			// buffer.WriteString()
+			return template.HTML(`<img class="imagePreviewUpload" src="/` + *image + `" id="imagePreviewUpload" />`)
+		},
 	}
 	// fmt.Println("using database: ", servercfg.GetDB())
 	// if err := database.InitializeDatabase(); err != nil {
@@ -40,17 +47,18 @@ func Init() *gin.Engine {
 	// router.Static("theme", "./assets")
 	// router.Static("favicon", "./favicon")
 	// router.POST("/authenticated", controllers.RequestLogin)
-	router.GET("/situgu", controllers.DashboardInit)
-	router.GET("/situgu/s", controllers.DashboardSu)
-	router.GET("/situgu/a", controllers.DashboardAdmin)
+	// router.GET("/situgu", controllers.DashboardInit)
+	// router.GET("/situgu/s", controllers.DashboardSu)
+	// router.GET("/situgu/a", controllers.DashboardAdmin)
 	// router.POST("/login", ProcessLogin)
 	//use  authorization middleware
-	private := router.Group("/situgu", AuthRequired)
+	private := router.Group("/", AuthRequired)
 	{
-		//router.Use(AuthRequired)
-		private.GET("/situgu", controllers.DashboardInit)
 		private.GET("/situgu/s", controllers.DashboardSu)
-		private.GET("/situgu/a", controllers.DashboardAdmin)
+		private.GET("/situgu/s/pengguna", controllers.PenggunaPage)
+		private.POST("/situgu/s/pengguna/getall", controllers.ReqPenggunaAll)
+		private.POST("/situgu/s/pengguna/detail", controllers.DetailPengguna)
+
 		// //network handlers
 		// private.POST("/create_network", CreateNetwork)
 		// private.POST("/delete_network", DeleteNetwork)
@@ -133,10 +141,10 @@ func AuthRequired(c *gin.Context) {
 		// 	c.HTML(http.StatusOK, "new", nil)
 		// 	c.Abort()
 		// } else {
-		message := session.Get("error")
-		fmt.Println("user exists --- message\n", message)
-		c.HTML(http.StatusUnauthorized, "Login", gin.H{"messge": message})
-		c.Abort()
+		location := url.URL{Path: "/auth"}
+		c.Redirect(http.StatusFound, location.RequestURI())
+		// c.HTML(http.StatusUnauthorized, "Login", gin.H{"messge": message})
+		// c.Abort()
 		// }
 	}
 	fmt.Println("authorized - good to go")
