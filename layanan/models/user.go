@@ -10,20 +10,20 @@ import (
 )
 
 type User struct {
-	ID             string  `json:"id"`
-	Fullname       *string `json:"fullname"`
-	Email          *string `json:"email"`
-	Nip            *string `json:"nip"`
-	NoHp           *string `json:"no_hp"`
-	JenisKelamin   *string `json:"jenis_kelamin"`
-	Jabatan        *string `json:"jabatan"`
-	Npsn           *string `json:"npsn"`
-	Kecamatan      *string `json:"kecamatan"`
-	SuratTugas     *string `json:"surat_tugas"`
-	ProfilePicture *string `json:"profile_picture"`
-	RoleUser       int     `json:"role_user"`
-	LastActive     *string `json:"last_active"`
-	UpdatedAt      *string `json:"updated_at"`
+	ID             string      `json:"id"`
+	Fullname       string      `json:"fullname"`
+	Email          string      `json:"email"`
+	Nip            string      `json:"nip"`
+	NoHp           string      `json:"no_hp"`
+	JenisKelamin   string      `json:"jenis_kelamin"`
+	Jabatan        string      `json:"jabatan"`
+	Npsn           string      `json:"npsn"`
+	Kecamatan      interface{} `json:"kecamatan"`
+	SuratTugas     string      `json:"surat_tugas"`
+	ProfilePicture interface{} `json:"profile_picture"`
+	RoleUser       int         `json:"role_user"`
+	LastActive     string      `json:"last_active"`
+	UpdatedAt      string      `json:"updated_at"`
 }
 
 func GetUser(token string) (User, error) {
